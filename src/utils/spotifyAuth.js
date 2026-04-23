@@ -1,7 +1,8 @@
 const clientId = "3c0bab622ed44ef9bb111b10902a4e27";
 // const redirectUri = "http://127.0.0.1:5173/callback";
-// const redirectUri = "https://your-app-name.netlify.app/callback";
+
 const redirectUri = window.location.origin + "/callback";
+
 
 // ---------------- PKCE HELPERS ----------------
 
