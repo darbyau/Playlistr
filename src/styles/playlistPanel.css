@@ -1,0 +1,139 @@
+.playlist-panel {
+  /* border: 1px solid pink; */
+  background:
+    radial-gradient(
+      circle at 50% 70%,
+      rgba(140, 97, 255, 0.15),
+      rgba(42, 131, 255, 0.08),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #050816 0%, #070b1a 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-input {
+  width: 100%;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-top: 20px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+
+  outline: none;
+  transition: all 0.2s ease;
+
+  backdrop-filter: blur(10px);
+}
+
+.playlist-input:focus {
+  /* Spotify green accent */
+  /* border-color: #1db954;  */
+  border-color: #285cfb;
+  /* box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.25); */
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.top > p {
+  color: #afb3bd;
+  font-size: 0.85rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.playlist-panel hr {
+  border: none; /* Removes default borders */
+  height: 2px; /* Sets the thickness */
+  background-color: #1c1e2a; /* Sets the color */
+  margin: 10px 0; /* Adds vertical spacing */
+}
+
+.playlist-panel > button {
+  width: 100%;
+  max-width: 320px;
+  min-width: 140px;
+  margin: auto auto 60px;
+
+  background: linear-gradient(to right, #9418fa, #285cfb);
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 1rem;
+
+  cursor: pointer;
+  box-shadow: 0px 3px 10px rgba(140, 97, 255, 0.5);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.playlist-panel > button:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 5px 15px rgba(140, 97, 255, 0.7);
+  filter: brightness(1.15);
+}
+
+.playlist-tracks_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.playlist-tracks {
+  height: 750px;
+  overflow-y: auto;
+  /* border: 1px solid #1c1e2a; */
+  border-radius: 25px;
+}
+
+.playlist-tracks::-webkit-scrollbar {
+  width: 10px;
+}
+
+.playlist-tracks::-webkit-scrollbar-thumb {
+  background-color: #351b4e;
+  border-radius: 10px;
+}
+
+.playlist-tracks::-webkit-scrollbar-track {
+  background: #1e1e1e; /* container */
+  border-radius: 10px;
+}
+
+.playlist-tracks::-webkit-scrollbar-thumb:hover {
+  background-color: #5c2d87;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  
+}
+
+.top > button {
+  background: transparent;
+  border: none;
+  color: white;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 7px 21px;
+
+  cursor: pointer;
+}
+
+.top > button:hover {
+  /* background: rgba(255, 255, 255, 0.08); */
+  background: rgba(232, 232, 232, 0.325);
+  outline: none;
+  /* border-color: #285cfb; */
+}

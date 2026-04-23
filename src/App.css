@@ -1,0 +1,132 @@
+main {
+  display: grid;
+  grid-template-columns: 260px 2fr 1fr;
+  height: 100vh;
+  min-height: 0;
+  /* overflow: hidden; */
+}
+
+.logo {
+  color: #ffffff;
+  width: 30px;
+  height: 25px;
+  color: white;
+}
+
+.logo-container {
+  background-color: yellow;
+  width: 40px;
+  height: 40px;
+  border-radius: 30%;
+  background: linear-gradient(135deg, #8c61ff 0%, #3683ef 60%, #00c5ae 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 3px 10px 0px rgba(140, 97, 255, 0.5);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 18px 0 50px;
+}
+
+.brand > span {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.search-bar,
+.sidebar,
+.playlist-panel {
+  padding: 0 25px;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+.sidebar > .search-button,
+.logout-button {
+  border: none;
+  border-radius: 12px;
+  padding: 15px 15px;
+  color: #ffffff;
+  font-size: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* margin-bottom: 650px; */
+  cursor: pointer;
+  border: 1px solid #4b1e75;
+}
+
+.sidebar > .search-button,
+.playlist-tracks-total {
+  background: linear-gradient(45deg, #231035, #141838);
+}
+
+.playlist-tracks-total {
+  border-radius: 10px;
+  padding: 10px;
+  color: #afb3bd;
+  font-size: 0.75rem;
+  border: 1px solid #361e5f;
+  margin: auto 0 20px 0;
+}
+
+.playlist-tracks-total p {
+  margin-bottom: 10px;
+}
+
+.playlist-tracks-total h3 {
+  color: #bd7aff;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.sidebar {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  /* border: 1px solid #3683ef; */
+}
+
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  backdrop-filter: blur(5px); /* Blur filter for the background behind */
+  z-index: 1000; /* High z-index to appear on top of the grid */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button {
+  background-color: #1db954; /* Spotify green */
+  border: none;
+  border-radius: 12px;
+  padding: 15px 30px;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #1ed760; /* Slightly lighter green on hover */
+}
+
+.logout-button {
+  margin-top: 15px;
+  background: linear-gradient(135deg, #8c61ff 0%, #3683ef 60%);
+}
