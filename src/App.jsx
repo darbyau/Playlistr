@@ -1,11 +1,13 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Logo from "./assets/note-icon.svg?react";
 import SearchBar from "./components/SearchBar";
 import PlaylistPanel from "./components/PlaylistPanel";
 import Magnify from "./assets/magnify-icon.svg?react";
 import { mockSearchResults } from "./mockSearchResults";
-import { loginWithSpotify, getAccessToken } from "./utils/spotifyAuth";
+import { loginWithSpotify } from "./utils/spotifyAuth";
+import Callback from "./pages/Callback.jsx";
 import {
   getCurrentUser,
   searchTracks,
@@ -59,29 +61,8 @@ function App() {
 
   // callback
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code");
-    const error = params.get("error");
     const storedToken = localStorage.getItem("access_token");
-
-    if (error) {
-      console.error("Spotify auth error:", error);
-      e;
-      return;
-    }
-
-    if (code) {
-      console.log("Authorization code found, exchanging for token...");
-      getAccessToken(code)
-        .then((data) => {
-          console.log("Token received:", data.access_token);
-          setToken(data.access_token);
-          window.history.replaceState({}, document.title, "/");
-        })
-        .catch((err) => {
-          console.error("Token exchange failed:", err);
-        });
-    } else if (storedToken) {
+    if (storedToken) {
       setToken(storedToken);
       console.log("Found stored token");
     }
@@ -150,9 +131,9 @@ function App() {
     setSearchResults([]);
     setPlaylistName("");
     setPlaylistTracks([]);
-  }
+  };
 
-  return (
+  const Home = () => (
     <main className="app">
       {!token && (
         <div className="login-overlay">
@@ -197,6 +178,16 @@ function App() {
         clearSearchResults={clearSearchResults}
       />
     </main>
+  );
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/callback" element={<Callback setToken={setToken} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
