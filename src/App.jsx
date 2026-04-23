@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Logo from "./assets/note-icon.svg?react";
 import SearchBar from "./components/SearchBar";
@@ -7,7 +6,6 @@ import PlaylistPanel from "./components/PlaylistPanel";
 import Magnify from "./assets/magnify-icon.svg?react";
 import { mockSearchResults } from "./mockSearchResults";
 import { loginWithSpotify } from "./utils/spotifyAuth";
-import Callback from "./pages/Callback.jsx";
 import {
   getCurrentUser,
   searchTracks,
@@ -131,9 +129,9 @@ function App() {
     setSearchResults([]);
     setPlaylistName("");
     setPlaylistTracks([]);
-  };
+  }
 
-  const Home = () => (
+  return (
     <main className="app">
       {!token && (
         <div className="login-overlay">
@@ -178,16 +176,6 @@ function App() {
         clearSearchResults={clearSearchResults}
       />
     </main>
-  );
-
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/callback" element={<Callback setToken={setToken} />} />
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
   );
 }
 
