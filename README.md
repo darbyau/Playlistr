@@ -4,9 +4,13 @@ A React web app that lets you search the Spotify library, build a custom playlis
 
 ## 🔗 Try it
 
+<<<<<<< HEAD
 [link](playlistr-site.netlify.app)
+=======
+[link](https://playlistr-site.netlify.app/) 
+>>>>>>> f397a18 (update readme)
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies Used 
 
 - **React** — component-based UI
 - **Vite** — build tool and dev server
