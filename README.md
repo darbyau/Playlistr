@@ -2,9 +2,9 @@
 
 A React web app that lets you search the Spotify library, build a custom playlist, and save it directly to your Spotify account.
 
-## 🔗 Live Demo
+## 🔗 Try it
 
-_Coming soon_
+[link](playlistr-site.netlify.app)
 
 ## 🛠️ Technologies Used
 
