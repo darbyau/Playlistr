@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import "./App.css";
 import Logo from "./assets/note-icon.svg?react";
 import SearchBar from "./components/SearchBar";
 import PlaylistPanel from "./components/PlaylistPanel";
 import Magnify from "./assets/magnify-icon.svg?react";
 import { mockSearchResults } from "./mockSearchResults";
-import { loginWithSpotify } from "./utils/spotifyAuth";
+import { loginWithSpotify, getAccessToken } from "./utils/spotifyAuth";
 import {
   getCurrentUser,
   searchTracks,
@@ -59,8 +59,29 @@ function App() {
 
   // callback
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    const error = params.get("error");
     const storedToken = localStorage.getItem("access_token");
-    if (storedToken) {
+
+    if (error) {
+      console.error("Spotify auth error:", error);
+      e;
+      return;
+    }
+
+    if (code) {
+      console.log("Authorization code found, exchanging for token...");
+      getAccessToken(code)
+        .then((data) => {
+          console.log("Token received:", data.access_token);
+          setToken(data.access_token);
+          window.history.replaceState({}, document.title, "/");
+        })
+        .catch((err) => {
+          console.error("Token exchange failed:", err);
+        });
+    } else if (storedToken) {
       setToken(storedToken);
       console.log("Found stored token");
     }
@@ -120,6 +141,13 @@ function App() {
       console.log("Playlist created!");
       console.log("Playlist ID:", playlist.id);
       console.log("URIs:", uris);
+
+      // 4. Clear playlist and search results
+      setPlaylistName("");
+      setPlaylistTracks([]);
+      setSearchResults([]);
+
+
     } catch (err) {
       console.error("Failed to create playlist:", err);
     }
@@ -130,6 +158,7 @@ function App() {
     setPlaylistName("");
     setPlaylistTracks([]);
   }
+
 
   return (
     <main className="app">
